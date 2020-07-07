@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Armour index{% endblock %}
+
+{% block body %}
+    <h1>Armour index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Durability</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for armour in armours %}
+            <tr>
+                <td>{{ armour.id }}</td>
+                <td>{{ armour.name }}</td>
+                <td>{{ armour.durability }}</td>
+                <td>
+                    <a href="{{ path('armour_show', {'id': armour.id}) }}">show</a>
+                    <a href="{{ path('armour_edit', {'id': armour.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('armour_new') }}">Create new</a>
+{% endblock %}

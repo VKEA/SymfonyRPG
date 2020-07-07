@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Weapon{% endblock %}
+
+{% block body %}
+    <h1>Create new Weapon</h1>
+
+    {{ include('weapon/_form.html.twig') }}
+
+    <a href="{{ path('weapon_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New WeaponClass{% endblock %}
+
+{% block body %}
+    <h1>Create new WeaponClass</h1>
+
+    {{ include('weapon_class/_form.html.twig') }}
+
+    <a href="{{ path('weapon_class_index') }}">back to list</a>
+{% endblock %}

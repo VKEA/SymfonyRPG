@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Armour{% endblock %}
+
+{% block body %}
+    <h1>Edit Armour</h1>
+
+    {{ include('armour/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('armour_index') }}">back to list</a>
+
+    {{ include('armour/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WeaponType index{% endblock %}
+
+{% block body %}
+    <h1>WeaponType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Power</th>
+                <th>Effects</th>
+                <th>MaxDurability</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for weapon_type in weapon_types %}
+            <tr>
+                <td>{{ weapon_type.id }}</td>
+                <td>{{ weapon_type.name }}</td>
+                <td>{{ weapon_type.description }}</td>
+                <td>{{ weapon_type.power }}</td>
+                <td>{{ weapon_type.effects }}</td>
+                <td>{{ weapon_type.maxDurability }}</td>
+                <td>
+                    <a href="{{ path('weapon_type_show', {'id': weapon_type.id}) }}">show</a>
+                    <a href="{{ path('weapon_type_edit', {'id': weapon_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('weapon_type_new') }}">Create new</a>
+{% endblock %}
