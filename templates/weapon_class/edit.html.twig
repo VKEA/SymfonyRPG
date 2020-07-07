@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit WeaponClass{% endblock %}
+
+{% block body %}
+    <h1>Edit WeaponClass</h1>
+
+    {{ include('weapon_class/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('weapon_class_index') }}">back to list</a>
+
+    {{ include('weapon_class/_delete_form.html.twig') }}
+{% endblock %}

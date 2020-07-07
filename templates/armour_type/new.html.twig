@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ArmourType{% endblock %}
+
+{% block body %}
+    <h1>Create new ArmourType</h1>
+
+    {{ include('armour_type/_form.html.twig') }}
+
+    <a href="{{ path('armour_type_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArmourType{% endblock %}
+
+{% block body %}
+    <h1>ArmourType</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ armour_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ armour_type.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ armour_type.description }}</td>
+            </tr>
+            <tr>
+                <th>Protection</th>
+                <td>{{ armour_type.protection }}</td>
+            </tr>
+            <tr>
+                <th>Effects</th>
+                <td>{{ armour_type.effects }}</td>
+            </tr>
+            <tr>
+                <th>MaxDurability</th>
+                <td>{{ armour_type.maxDurability }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('armour_type_index') }}">back to list</a>
+
+    <a href="{{ path('armour_type_edit', {'id': armour_type.id}) }}">edit</a>
+
+    {{ include('armour_type/_delete_form.html.twig') }}
+{% endblock %}

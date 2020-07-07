@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WeaponType{% endblock %}
+
+{% block body %}
+    <h1>WeaponType</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ weapon_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ weapon_type.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ weapon_type.description }}</td>
+            </tr>
+            <tr>
+                <th>Power</th>
+                <td>{{ weapon_type.power }}</td>
+            </tr>
+            <tr>
+                <th>Effects</th>
+                <td>{{ weapon_type.effects }}</td>
+            </tr>
+            <tr>
+                <th>MaxDurability</th>
+                <td>{{ weapon_type.maxDurability }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('weapon_type_index') }}">back to list</a>
+
+    <a href="{{ path('weapon_type_edit', {'id': weapon_type.id}) }}">edit</a>
+
+    {{ include('weapon_type/_delete_form.html.twig') }}
+{% endblock %}

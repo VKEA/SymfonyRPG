@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArmourType index{% endblock %}
+
+{% block body %}
+    <h1>ArmourType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Protection</th>
+                <th>Effects</th>
+                <th>MaxDurability</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for armour_type in armour_types %}
+            <tr>
+                <td>{{ armour_type.id }}</td>
+                <td>{{ armour_type.name }}</td>
+                <td>{{ armour_type.description }}</td>
+                <td>{{ armour_type.protection }}</td>
+                <td>{{ armour_type.effects }}</td>
+                <td>{{ armour_type.maxDurability }}</td>
+                <td>
+                    <a href="{{ path('armour_type_show', {'id': armour_type.id}) }}">show</a>
+                    <a href="{{ path('armour_type_edit', {'id': armour_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('armour_type_new') }}">Create new</a>
+{% endblock %}
