@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ItemRepository::class)
  */
-class Item
+class Item implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -170,5 +170,20 @@ class Item
         }
 
         return $this;
+    }
+
+    /**
+     * JSON serialise
+     */
+    public function jsonSerialize() {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'price' => $this->getPrice(),
+            'effects' => $this->getEffects(),
+            'description' => $this->getDescription(),
+            'sprite' => $this->getSprite(),
+            'reuasable' => $this->getReusable()
+        ];
     }
 }
