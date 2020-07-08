@@ -237,6 +237,11 @@ class User extends BaseUser
         return $this;
     }
 
+    public function __toString()
+    {
+        return (string) $this->getUsername();
+    }
+
     /**
      * @return Collection|Armour[]
      */
