@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ItemInventoryRepository::class)
  */
-class ItemInventory
+class ItemInventory implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -54,5 +54,16 @@ class ItemInventory
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * JSON serialise
+     */
+    public function jsonSerialize() {
+        return [
+            'id' => $this->getId(),
+            'item' => $this->getItem(),
+            'user' => $this->getUser()
+        ];
     }
 }

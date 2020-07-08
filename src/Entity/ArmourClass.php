@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ArmourClassRepository::class)
  */
-class ArmourClass
+class ArmourClass implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -85,5 +85,16 @@ class ArmourClass
         }
 
         return $this;
+    }
+
+    /**
+     * JSON serialise
+     */
+    public function jsonSerialize() {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'types' => $this->getArmourTypes()
+        ];
     }
 }

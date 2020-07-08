@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=WeaponRepository::class)
  */
-class Weapon
+class Weapon implements \JsonSerializable
 {
     /**
      * @ORM\Id()

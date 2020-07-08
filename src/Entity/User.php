@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
-class User extends BaseUser
+class User extends BaseUser implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -393,5 +393,34 @@ class User extends BaseUser
         $this->legArmour = $legArmour;
 
         return $this;
+    }
+
+    /**
+     * JSON serialise
+     */
+    public function jsonSerialize() {
+        return [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'user' => $this->getUser(),
+            'level' => $this->getLevel(),
+            'hitpoints' => $this->getHitpoints(),
+            'currenthitpoints' => $this->getCurrentHitpoints(),
+            'attack' => $this->getAttack(),
+            'defence' => $this->getDefence(),
+            'speed' => $this->getSpeed(),
+            'magic' => $this->getMagic(),
+            'resistance' => $this->getResistance(),
+            'accuracy' => $this->getAccuracy(),
+            'evasion' => $this->getEvasion(),
+            'armours' => $this->getArmours(),
+            'weapons' => $this->getWeapons(),
+            'iteminventories' => $this->getItemInventories(),
+            'primaryweapon' => $this->getPrimaryWeapon(),
+            'secondaryweapon' => $this->getSecondaryWeapon(),
+            'headarmour' => $this->getHeadArmour(),
+            'chestarmour' => $this->getChestArmour(),
+            'legarmour' => $this->getLegArmour(),
+        ];
     }
 }
