@@ -1,10 +1,14 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import '../css/Battle.css'
 
-function Battle() {
-  return (
-    <></>
-  )
-}
+import BattleContainer from './components/BattleContainer'
 
-export default Battle
+ReactDOM.render(
+  <React.StrictMode>
+    <BattleContainer />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
+
+serviceWorker.unregister()
