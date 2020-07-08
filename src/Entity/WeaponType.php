@@ -135,7 +135,12 @@ class WeaponType
 
         return $this;
     }
-
+    
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
+    
     /**
      * @return Collection|Weapon[]
      */
