@@ -94,7 +94,6 @@ class ArmourClass implements \JsonSerializable
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'types' => $this->getArmourTypes()
         ];
     }
 }

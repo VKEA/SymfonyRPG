@@ -183,8 +183,7 @@ class WeaponType implements \JsonSerializable
             'power' => $this->getPower(),
             'effects' => $this->getEffects(),
             'class' => $this->getClass(),
-            'maxdurability' => $this->getMaxDurability(),
-            'weapons' => $this->getWeapons(),
+            'maxdurability' => $this->getMaxDurability()
         ];
     }
 }

@@ -184,7 +184,6 @@ class ArmourType implements \JsonSerializable
             'effects' => $this->getEffects(),
             'class' => $this->getClass(),
             'maxdurability' => $this->getMaxDurability(),
-            'armours' => $this->getArmours(),
         ];
     }
 }
