@@ -34,8 +34,9 @@ class BattleController extends AbstractController
     public function getPlayerApi(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $id = $request->request->get('id');
-        $user = $entityManager->getRepository(User::class)->findOneBy(['id' => 1]);
+        $requestData = json_decode($request->getContent());
+        $id = $requestData->id;
+        $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $id]);
         return new JsonResponse(
             [
                 'status' => '200',

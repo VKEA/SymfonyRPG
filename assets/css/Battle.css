@@ -1,0 +1,39 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.players {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    background-color: antiquewhite;
+}
+
+.playercontainer {
+    display: flex;
+    flex-direction: column;
+
+    margin: 10px;
+
+    width: 200px;
+    height: 100px;
+
+    background-color: bisque;
+    border-radius: 5px;
+}
+
+.hitpointbar {
+    width: 100px;
+    height: 5px;
+    background-color: black;
+    border-radius: 5px;;
+}
+
+.hitpoints {
+    background-color: chartreuse;
+}

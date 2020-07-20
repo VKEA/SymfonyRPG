@@ -4,48 +4,76 @@ class BattleContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      player: null
+      players: [],
+      turn: 0
     }
   }
 
+  initialise() {
+    
+  }
+
   componentDidMount() {
-    fetch("/battle/api/get/player", {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify({
-        id: '1'
+    for (let i = 0; i < this.props.players.length; i++) {
+      console.log(this.props.players[i])
+      fetch("/battle/api/get/player", {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+          id: this.props.players[i]
+        })
       })
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result.data)
-          this.setState({
-            player: result.data
-          })
-        }
-      )
+        .then(res => res.json())
+        .then(
+          (result) => {
+            console.log(result.data)
+            this.state.players.push(result.data)
+            console.log(this.state)
+            this.forceUpdate()
+          }
+        )
+    }
   }
 
   render () {
-    if (this.state.player !== null) {
+    // Check if players are loaded in
+    if (this.state.players.length > 0) {
+
+      let playerContainers = '';
+      for (let i = 0; i < this.state.players.length; i++) {
+        playerContainers = (
+        <>
+          {playerContainers}
+          <div className="playercontainer" id={this.state.players[i].id}>
+            <span className="name">{this.state.players[i].username}</span>
+            <span className="level">{this.state.players[i].level}</span>
+            <div className="hitpointbar">
+              <div className="hitpoints" style={{height: "100%", width: "calc(100% / " + this.state.players[i].hitpoints +" * " + this.state.players[i].currenthitpoints + ")"}}></div>
+            </div>
+          </div>
+        </>
+        )
+      }
+
       return (
         <div className="battlecontainer">
-          {this.state.player.username}
+          <div className="players">
+            {playerContainers}
+          </div>
         </div>
       )
     }
     else {
       return (
         <div className="battlecontainer">
-          initialising battle
+          initialising battle... Please wait. :)
         </div>
       )
     }
