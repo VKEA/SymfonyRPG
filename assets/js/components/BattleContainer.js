@@ -52,8 +52,10 @@ class BattleContainer extends React.Component {
         <>
           {playerContainers}
           <div className="playercontainer" id={this.state.players[i].id}>
-            <span className="name">{this.state.players[i].username}</span>
-            <span className="level">{this.state.players[i].level}</span>
+            <div className="playernamecontainer">
+              <span className="name">{this.state.players[i].username}</span>
+              <span className="level">lvl. {this.state.players[i].level}</span>
+            </div>
             <div className="hitpointbar">
               <div className="hitpoints" style={{height: "100%", width: "calc(100% / " + this.state.players[i].hitpoints +" * " + this.state.players[i].currenthitpoints + ")"}}></div>
             </div>
