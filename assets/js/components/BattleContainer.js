@@ -73,7 +73,7 @@ class BattleContainer extends React.Component {
 
         playerContainerClasses = 'playercontainer'
         if (this.state.currentTurn == this.state.players[i].id) {
-          playerContainerClasses = playerContainerClasses + ' playercontainer--current playercontainer--damaged'
+          playerContainerClasses = playerContainerClasses + ' playercontainer--current'
         }
         if (this.state.players[i].currenthitpoints < (this.state.players[i].hitpoints/10)) {
           playerContainerClasses = playerContainerClasses + ' playercontainer--damaged'
