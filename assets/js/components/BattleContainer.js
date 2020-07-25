@@ -59,6 +59,7 @@ class BattleContainer extends React.Component {
             <div className="hitpointbar">
               <div className="hitpoints" style={{height: "100%", width: "calc(100% / " + this.state.players[i].hitpoints +" * " + this.state.players[i].currenthitpoints + ")"}}></div>
             </div>
+            <div>HP: {this.state.players[i].currenthitpoints}/{this.state.players[i].hitpoints}</div>
           </div>
         </>
         )
