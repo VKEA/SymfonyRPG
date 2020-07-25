@@ -5,15 +5,11 @@ class BattleContainer extends React.Component {
     super(props)
     this.state = {
       players: [],
-      turn: 0
+      currentTurn: null
     }
   }
 
-  initialise() {
-    
-  }
-
-  componentDidMount() {
+  initialise () {
     for (let i = 0; i < this.props.players.length; i++) {
       console.log(this.props.players[i])
       fetch("/battle/api/get/player", {
@@ -33,12 +29,37 @@ class BattleContainer extends React.Component {
         .then(res => res.json())
         .then(
           (result) => {
-            console.log(result.data)
+            // Get players
             this.state.players.push(result.data)
-            console.log(this.state)
+            this.state.players.sort(function(a, b) {
+              let keyA = a.speed
+              let keyB = b.speed
+
+              if (keyA > keyB) return -1
+              if (keyA < keyB) return 1
+              return 0
+            })
+
+            if (this.currentTurn == null) {
+              this.setState({
+                currentTurn: this.state.players[0].id
+              })
+            }
+
+            console.log (this.state)
             this.forceUpdate()
           }
         )
+    }
+  }
+
+  attack() {
+    
+  }
+
+  componentDidMount() {
+    if (this.state.players.length == 0) {
+      this.initialise()
     }
   }
 
@@ -46,12 +67,22 @@ class BattleContainer extends React.Component {
     // Check if players are loaded in
     if (this.state.players.length > 0) {
 
-      let playerContainers = '';
+      let playerContainers = ''
+      let playerContainerClasses = 'playercontainer'
       for (let i = 0; i < this.state.players.length; i++) {
+
+        playerContainerClasses = 'playercontainer'
+        if (this.state.currentTurn == this.state.players[i].id) {
+          playerContainerClasses = playerContainerClasses + ' playercontainer--current playercontainer--damaged'
+        }
+        if (this.state.players[i].currenthitpoints < (this.state.players[i].hitpoints/10)) {
+          playerContainerClasses = playerContainerClasses + ' playercontainer--damaged'
+        }
+
         playerContainers = (
         <>
           {playerContainers}
-          <div className="playercontainer" id={this.state.players[i].id}>
+          <div className={playerContainerClasses} id={this.state.players[i].id}>
             <div className="playernamecontainer">
               <span className="name">{this.state.players[i].username}</span>
               <span className="level">lvl. {this.state.players[i].level}</span>
