@@ -93,8 +93,7 @@ class WeaponClass implements \JsonSerializable
     public function jsonSerialize() {
         return [
             'id' => $this->getId(),
-            'name' => $this->getName(),
-            'types' => $this->getWeaponTypes()
+            'name' => $this->getName()
         ];
     }
 }

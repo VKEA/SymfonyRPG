@@ -103,7 +103,7 @@ class Armour implements \JsonSerializable
             'id' => $this->getId(),
             'name' => $this->getName(),
             'type' => $this->getType(),
-            'user' => $this->getUser(),
+            'user' => $this->getUser()->getId(),
             'durability' => $this->getDurability()
         ];
     }

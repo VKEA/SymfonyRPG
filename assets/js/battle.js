@@ -6,9 +6,7 @@ import BattleContainer from './components/BattleContainer'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BattleContainer />
+    <BattleContainer players={['1', '2']}/>
   </React.StrictMode>,
   document.getElementById('root')
 )
-
-serviceWorker.unregister()

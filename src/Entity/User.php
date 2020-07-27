@@ -402,7 +402,6 @@ class User extends BaseUser implements \JsonSerializable
         return [
             'id' => $this->getId(),
             'username' => $this->getUsername(),
-            'user' => $this->getUser(),
             'level' => $this->getLevel(),
             'hitpoints' => $this->getHitpoints(),
             'currenthitpoints' => $this->getCurrentHitpoints(),
@@ -413,9 +412,6 @@ class User extends BaseUser implements \JsonSerializable
             'resistance' => $this->getResistance(),
             'accuracy' => $this->getAccuracy(),
             'evasion' => $this->getEvasion(),
-            'armours' => $this->getArmours(),
-            'weapons' => $this->getWeapons(),
-            'iteminventories' => $this->getItemInventories(),
             'primaryweapon' => $this->getPrimaryWeapon(),
             'secondaryweapon' => $this->getSecondaryWeapon(),
             'headarmour' => $this->getHeadArmour(),
