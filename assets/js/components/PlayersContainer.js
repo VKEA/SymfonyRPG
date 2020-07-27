@@ -3,15 +3,10 @@ import React from 'react'
 class PlayersContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      players: [],
-      currentTurn: null
-    }
   }
 
   render () {
     // Check if players are loaded in
-    console.log(this.props)
     if (this.props.players.length > 0) {
 
       let playerContainers = ''

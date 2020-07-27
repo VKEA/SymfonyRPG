@@ -1,5 +1,6 @@
 import React from 'react'
 import PlayersContainer from './PlayersContainer'
+import MessageContainer from './MessageContainer'
 
 class BattleContainer extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class BattleContainer extends React.Component {
     this.state = {
       players: [],
       currentTurn: null,
-      messages: ['battle initialised']
+      messages: ['Battle started!', 'peepee poopoo', 'yeetdab', 'lorem ipsum']
     }
   }
 
@@ -96,6 +97,9 @@ class BattleContainer extends React.Component {
     return (
       <div className="battlecontainer">
         <PlayersContainer players={this.state.players} currentTurn={this.state.currentTurn}/>
+        <MessageContainer messages={this.state.messages}/>
+        <main></main>
+        <footer>Footer Content — UwU 2020</footer>
       </div>
     )
   }

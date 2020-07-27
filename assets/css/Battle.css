@@ -13,12 +13,19 @@ html, body {
     font-family: 'Verdana', 'Century Gothic', Helvetica, Arial, sans-serif;
 }
 
-.players {
+.battlecontainer {
+    display: grid;
     width: 100vw;
+    height: 100vh;
+    grid-template: auto 1fr auto / minmax(200px, 20vw) 1fr auto;
+}
+
+.players {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
     padding: 10px;
+    grid-column: 1 / 4;
 
     background-color: #13315C;
 }
@@ -117,4 +124,29 @@ html, body {
 .hitpoints {
     background-color: chartreuse;
     border-radius: 5px;
+}
+
+.messagecontainer {
+    background-color: #0B2545;
+    padding:10px;
+    grid-column: 1 /2;
+    overflow-y: scroll;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.messagecontainer::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    grid-column: 2 / 4;
+}
+  
+footer {
+    background-color: #13315C;
+    padding: 2rem;
+    text-align: center;
+    grid-column: 1 / 4;
 }
