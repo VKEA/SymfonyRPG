@@ -107,6 +107,11 @@ class User extends BaseUser implements \JsonSerializable
      * @ORM\OneToOne(targetEntity=Armour::class, cascade={"persist", "remove"})
      */
     private $legArmour;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Game::class, mappedBy="currentPlayer")
+     */
+    private $currentTurnGames;
     
     public function __construct()
     {
@@ -115,6 +120,7 @@ class User extends BaseUser implements \JsonSerializable
         $this->armours = new ArrayCollection();
         $this->weapons = new ArrayCollection();
         $this->itemInventories = new ArrayCollection();
+        $this->currentTurnGames = new ArrayCollection();
     }
 
     public function getLevel(): ?int
@@ -418,5 +424,36 @@ class User extends BaseUser implements \JsonSerializable
             'chestarmour' => $this->getChestArmour(),
             'legarmour' => $this->getLegArmour(),
         ];
+    }
+
+    /**
+     * @return Collection|Game[]
+     */
+    public function getCurrentTurnGames(): Collection
+    {
+        return $this->currentTurnGames;
+    }
+
+    public function addCurrentTurnGame(Game $currentTurnGame): self
+    {
+        if (!$this->currentTurnGames->contains($currentTurnGame)) {
+            $this->currentTurnGames[] = $currentTurnGame;
+            $currentTurnGame->setCurrentPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCurrentTurnGame(Game $currentTurnGame): self
+    {
+        if ($this->currentTurnGames->contains($currentTurnGame)) {
+            $this->currentTurnGames->removeElement($currentTurnGame);
+            // set the owning side to null (unless already changed)
+            if ($currentTurnGame->getCurrentPlayer() === $this) {
+                $currentTurnGame->setCurrentPlayer(null);
+            }
+        }
+
+        return $this;
     }
 }

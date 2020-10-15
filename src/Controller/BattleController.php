@@ -85,6 +85,24 @@ class BattleController extends AbstractController
     }
 
     /**
+     * @Route("/api/get/items", name="api_items_get", methods={"GET", "POST"})
+     */
+    public function getItemsApi(Request $request): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $requestData = json_decode($request->getContent());
+        $id = $requestData->id;
+        $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $id]);
+        return new JsonResponse(
+            [
+                'status' => '200',
+                'data' => $user->getItemInventories()
+            ],
+            200
+        );
+    }
+
+    /**
      * @Route("/api/attack", name="api_attack", methods={"GET", "POST"})
      */
     public function attackApi(Request $request): Response
